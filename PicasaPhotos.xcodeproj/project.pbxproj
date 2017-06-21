@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55DD96D1681561B4E2D40EDF /* Pods_PicasaPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973011662652F079A7235556 /* Pods_PicasaPhotos.framework */; };
 		DE41F3FD1EFA476600B1A1A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */; };
 		DE41F3FF1EFA476600B1A1A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */; };
 		DE41F4021EFA476600B1A1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4001EFA476600B1A1A1 /* Main.storyboard */; };
 		DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4031EFA476600B1A1A1 /* Assets.xcassets */; };
 		DE41F4071EFA476600B1A1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */; };
+		DE41F40F1EFA483A00B1A1A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		973011662652F079A7235556 /* Pods_PicasaPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicasaPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE41F3F91EFA476600B1A1A1 /* PicasaPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicasaPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		DE41F4031EFA476600B1A1A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE41F4061EFA476600B1A1A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE41F4081EFA476600B1A1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.debug.xcconfig"; sourceTree = "<group>"; };
+		EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DD96D1681561B4E2D40EDF /* Pods_PicasaPhotos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A39C2552770D1D73967E663B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */,
+				EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DE41F3F01EFA476600B1A1A1 = {
 			isa = PBXGroup;
 			children = (
 				DE41F3FB1EFA476600B1A1A1 /* PicasaPhotos */,
 				DE41F3FA1EFA476600B1A1A1 /* Products */,
+				A39C2552770D1D73967E663B /* Pods */,
+				DE602118DE09E041DD0ABB14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +78,17 @@
 				DE41F4031EFA476600B1A1A1 /* Assets.xcassets */,
 				DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */,
 				DE41F4081EFA476600B1A1A1 /* Info.plist */,
+				DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */,
 			);
 			path = PicasaPhotos;
+			sourceTree = "<group>";
+		};
+		DE602118DE09E041DD0ABB14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				973011662652F079A7235556 /* Pods_PicasaPhotos.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE41F40B1EFA476600B1A1A1 /* Build configuration list for PBXNativeTarget "PicasaPhotos" */;
 			buildPhases = (
+				C9BB6363813A8B4DCA71A545 /* [CP] Check Pods Manifest.lock */,
 				DE41F3F51EFA476600B1A1A1 /* Sources */,
 				DE41F3F61EFA476600B1A1A1 /* Frameworks */,
 				DE41F3F71EFA476600B1A1A1 /* Resources */,
+				AD56A5CBA7261BCACECF3610 /* [CP] Embed Pods Frameworks */,
+				65AED0C305DA8AC4F44B9D6F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +127,7 @@
 					DE41F3F81EFA476600B1A1A1 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = BEQ6W5C27H;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,12 +156,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE41F4071EFA476600B1A1A1 /* LaunchScreen.storyboard in Resources */,
+				DE41F40F1EFA483A00B1A1A1 /* GoogleService-Info.plist in Resources */,
 				DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */,
 				DE41F4021EFA476600B1A1A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		65AED0C305DA8AC4F44B9D6F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD56A5CBA7261BCACECF3610 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9BB6363813A8B4DCA71A545 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DE41F3F51EFA476600B1A1A1 /* Sources */ = {
@@ -259,26 +339,35 @@
 		};
 		DE41F40C1EFA476600B1A1A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BEQ6W5C27H;
 				INFOPLIST_FILE = PicasaPhotos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.first.PicasaPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DE41F40D1EFA476600B1A1A1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = BEQ6W5C27H;
 				INFOPLIST_FILE = PicasaPhotos/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.first.PicasaPhotos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -302,6 +391,7 @@
 				DE41F40D1EFA476600B1A1A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

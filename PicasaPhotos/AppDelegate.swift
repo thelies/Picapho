@@ -10,19 +10,37 @@ import UIKit
 import GGLSignIn
 import GoogleSignIn
 
+enum AppMode {
+    case Init
+    case Login
+    case Main
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var mode: AppMode = .Init
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        GIDSignIn.sharedInstance().signInSilently()
+        return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        if let _ = GIDSignIn.sharedInstance().currentUser {
+            showMain()
+        } else {
+            showLogin()
+        }
+        
         return true
     }
 
@@ -52,5 +70,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return GIDSignIn.sharedInstance().handle(url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
     }
 
+}
+
+extension AppDelegate {
+    private func goTo(_ storyboard: UIStoryboard) {
+        if let vc = storyboard.instantiateInitialViewController() {
+            UIView.transition(from: window!.rootViewController!.view, to: (vc.view)! , duration: 0.5, options: .transitionCrossDissolve, completion: { _ in
+                self.window?.rootViewController = vc
+            })
+        }
+    }
+    
+    func showMain() {
+        if mode == .Main { return }
+        mode = .Main
+        goTo(StoryboardUtil.mainStoryboard)
+    }
+    
+    func showLogin() {
+        if mode == .Login { return }
+        mode = .Login
+        goTo(StoryboardUtil.loginStoryboard)
+    }
 }
 

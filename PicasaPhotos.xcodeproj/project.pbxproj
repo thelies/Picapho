@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		55DD96D1681561B4E2D40EDF /* Pods_PicasaPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973011662652F079A7235556 /* Pods_PicasaPhotos.framework */; };
 		DE41F3FD1EFA476600B1A1A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */; };
-		DE41F3FF1EFA476600B1A1A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */; };
 		DE41F4021EFA476600B1A1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4001EFA476600B1A1A1 /* Main.storyboard */; };
 		DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4031EFA476600B1A1A1 /* Assets.xcassets */; };
 		DE41F4071EFA476600B1A1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */; };
@@ -20,13 +19,16 @@
 		DE41F41E1EFB980100B1A1A1 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE41F41C1EFB980100B1A1A1 /* AlbumCell.xib */; };
 		DE41F4211EFB9A6000B1A1A1 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4201EFB9A6000B1A1A1 /* AlbumViewModel.swift */; };
 		DE41F4231EFB9CAD00B1A1A1 /* AlbumListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4221EFB9CAD00B1A1A1 /* AlbumListViewModel.swift */; };
+		DE41F4251EFBC24100B1A1A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4241EFBC24100B1A1A1 /* Login.storyboard */; };
+		DE41F4281EFBE9F900B1A1A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */; };
+		DE41F42B1EFC240C00B1A1A1 /* StoryboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */; };
+		DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		973011662652F079A7235556 /* Pods_PicasaPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicasaPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE41F3F91EFA476600B1A1A1 /* PicasaPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicasaPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DE41F4011EFA476600B1A1A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE41F4031EFA476600B1A1A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE41F4061EFA476600B1A1A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +40,10 @@
 		DE41F41C1EFB980100B1A1A1 /* AlbumCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		DE41F4201EFB9A6000B1A1A1 /* AlbumViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		DE41F4221EFB9CAD00B1A1A1 /* AlbumListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewModel.swift; sourceTree = "<group>"; };
+		DE41F4241EFBC24100B1A1A1 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardUtil.swift; sourceTree = "<group>"; };
+		DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewController.swift; sourceTree = "<group>"; };
 		ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,15 +90,15 @@
 		DE41F3FB1EFA476600B1A1A1 /* PicasaPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				DE77E3001EFC8C6100993B7C /* Storyboards */,
+				DE41F4291EFC23EA00B1A1A1 /* Utilities */,
+				DE41F4261EFBCBCE00B1A1A1 /* ViewControllers */,
 				DE41F41F1EFB9A4D00B1A1A1 /* ViewModels */,
 				DE41F41A1EFB97C500B1A1A1 /* Views */,
 				DE41F4171EFB77A600B1A1A1 /* Models */,
 				DE41F4141EFB55C000B1A1A1 /* Services */,
 				DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */,
-				DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */,
-				DE41F4001EFA476600B1A1A1 /* Main.storyboard */,
 				DE41F4031EFA476600B1A1A1 /* Assets.xcassets */,
-				DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */,
 				DE41F4081EFA476600B1A1A1 /* Info.plist */,
 				DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */,
 			);
@@ -133,12 +139,39 @@
 			name = ViewModels;
 			sourceTree = "<group>";
 		};
+		DE41F4261EFBCBCE00B1A1A1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */,
+				DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DE41F4291EFC23EA00B1A1A1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		DE602118DE09E041DD0ABB14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				973011662652F079A7235556 /* Pods_PicasaPhotos.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE77E3001EFC8C6100993B7C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DE41F4001EFA476600B1A1A1 /* Main.storyboard */,
+				DE41F4241EFBC24100B1A1A1 /* Login.storyboard */,
+				DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +240,7 @@
 			files = (
 				DE41F4071EFA476600B1A1A1 /* LaunchScreen.storyboard in Resources */,
 				DE41F40F1EFA483A00B1A1A1 /* GoogleService-Info.plist in Resources */,
+				DE41F4251EFBC24100B1A1A1 /* Login.storyboard in Resources */,
 				DE41F41E1EFB980100B1A1A1 /* AlbumCell.xib in Resources */,
 				DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */,
 				DE41F4021EFA476600B1A1A1 /* Main.storyboard in Resources */,
@@ -268,10 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE41F42B1EFC240C00B1A1A1 /* StoryboardUtil.swift in Sources */,
 				DE41F4211EFB9A6000B1A1A1 /* AlbumViewModel.swift in Sources */,
-				DE41F3FF1EFA476600B1A1A1 /* ViewController.swift in Sources */,
 				DE41F4161EFB55D000B1A1A1 /* APIService.swift in Sources */,
+				DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */,
 				DE41F41D1EFB980100B1A1A1 /* AlbumCell.swift in Sources */,
+				DE41F4281EFBE9F900B1A1A1 /* LoginViewController.swift in Sources */,
 				DE41F3FD1EFA476600B1A1A1 /* AppDelegate.swift in Sources */,
 				DE41F4231EFB9CAD00B1A1A1 /* AlbumListViewModel.swift in Sources */,
 				DE41F4191EFB77B000B1A1A1 /* Album.swift in Sources */,

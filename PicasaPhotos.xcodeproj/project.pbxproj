@@ -14,6 +14,8 @@
 		DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4031EFA476600B1A1A1 /* Assets.xcassets */; };
 		DE41F4071EFA476600B1A1A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4051EFA476600B1A1A1 /* LaunchScreen.storyboard */; };
 		DE41F40F1EFA483A00B1A1A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */; };
+		DE41F4161EFB55D000B1A1A1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4151EFB55D000B1A1A1 /* APIService.swift */; };
+		DE41F4191EFB77B000B1A1A1 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4181EFB77B000B1A1A1 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		DE41F4061EFA476600B1A1A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE41F4081EFA476600B1A1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DE41F4151EFB55D000B1A1A1 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		DE41F4181EFB77B000B1A1A1 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +76,8 @@
 		DE41F3FB1EFA476600B1A1A1 /* PicasaPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				DE41F4171EFB77A600B1A1A1 /* Model */,
+				DE41F4141EFB55C000B1A1A1 /* Services */,
 				DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */,
 				DE41F3FE1EFA476600B1A1A1 /* ViewController.swift */,
 				DE41F4001EFA476600B1A1A1 /* Main.storyboard */,
@@ -81,6 +87,22 @@
 				DE41F40E1EFA483A00B1A1A1 /* GoogleService-Info.plist */,
 			);
 			path = PicasaPhotos;
+			sourceTree = "<group>";
+		};
+		DE41F4141EFB55C000B1A1A1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DE41F4151EFB55D000B1A1A1 /* APIService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		DE41F4171EFB77A600B1A1A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE41F4181EFB77B000B1A1A1 /* Album.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		DE602118DE09E041DD0ABB14 /* Frameworks */ = {
@@ -218,7 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE41F3FF1EFA476600B1A1A1 /* ViewController.swift in Sources */,
+				DE41F4161EFB55D000B1A1A1 /* APIService.swift in Sources */,
 				DE41F3FD1EFA476600B1A1A1 /* AppDelegate.swift in Sources */,
+				DE41F4191EFB77B000B1A1A1 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

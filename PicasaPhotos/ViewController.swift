@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         setTitles()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().scopes.append("https://picasaweb.google.com/data/")
+        GIDSignIn.sharedInstance().signInSilently()
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,10 +68,12 @@ extension ViewController: GIDSignInDelegate {
             setTitles()
             let userId = user.userID
             let idToken = user.authentication.idToken
+            print("===== \(user.authentication.accessToken)")
             let fullName = user.profile.name
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
+            APIService.sharedInstance.fetchAlbumsList()
             print(userId ?? "", idToken ?? "", fullName ?? "", givenName ?? "", familyName ?? "", email ?? "")
         } else {
             print("\(error.localizedDescription)")

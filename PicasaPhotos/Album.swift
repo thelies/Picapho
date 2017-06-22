@@ -9,13 +9,14 @@
 import Foundation
 import RealmSwift
 import SWXMLHash
+import RxDataSources
 
 class Album: Object {
     dynamic var id = ""
     dynamic var title = ""
     dynamic var access = ""
     dynamic var numphotos = 0
-    dynamic var thumbnailURL = ""
+    dynamic var imageURL = ""
     
     override static func primaryKey() -> String? {
         return "id"
@@ -27,6 +28,12 @@ class Album: Object {
         self.title = indexer["title"].element!.text
         self.access = indexer["gphoto:access"].element!.text
         self.numphotos = Int(indexer["gphoto:numphotos"].element!.text)!
-        self.thumbnailURL = indexer["media:group"]["media:thumbnail"].element!.attribute(by: "url")!.text
+        self.imageURL = indexer["media:group"]["media:content"].element!.attribute(by: "url")!.text
+    }
+}
+
+extension Album: IdentifiableType {
+    var identity: String {
+        return self.isInvalidated ? "" : id
     }
 }

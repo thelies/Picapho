@@ -9,11 +9,18 @@
 import UIKit
 import GGLSignIn
 import GoogleSignIn
+import RxSwift
+import RxDataSources
 
 class ViewController: UIViewController {
 
     @IBOutlet var signInOutButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
+    var viewModel = AlbumListViewModel()
+    let dataSource = RxTableViewSectionedAnimatedDataSource<AlbumSection>()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +29,27 @@ class ViewController: UIViewController {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().scopes.append("https://picasaweb.google.com/data/")
         GIDSignIn.sharedInstance().signInSilently()
+        
+        tableView.register(UINib(nibName: AlbumCell.identifier, bundle: nil), forCellReuseIdentifier: AlbumCell.identifier)
+        tableView.estimatedRowHeight = 130
+        tableView.rowHeight = UITableViewAutomaticDimension
+        configDataSource()
+        bind()
+    }
+    
+    func configDataSource() {
+        dataSource.configureCell = { (ds, tv, ip, item) in
+            let cell = tv.dequeueReusableCell(withIdentifier: AlbumCell.identifier) as! AlbumCell
+            cell.viewModel = AlbumViewModel(album: item)
+            cell.bind()
+            return cell
+        }
+    }
+    
+    func bind() {
+        viewModel.albums
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PicasaPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="PicasaPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -21,35 +21,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7q-tQ-IvJ">
+                                <rect key="frame" x="166" y="28" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGQ-gr-j3j">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <rect key="frame" x="164" y="57" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="signInOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eIh-5g-Iex"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7q-tQ-IvJ">
-                                <rect key="frame" x="166" y="289" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-ov-UXo">
+                                <rect key="frame" x="0.0" y="95" width="375" height="572"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="k7q-tQ-IvJ" firstAttribute="centerX" secondItem="DGQ-gr-j3j" secondAttribute="centerX" id="ODo-S2-Prw"/>
-                            <constraint firstItem="DGQ-gr-j3j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OO6-pb-rjj"/>
-                            <constraint firstItem="DGQ-gr-j3j" firstAttribute="top" secondItem="k7q-tQ-IvJ" secondAttribute="bottom" constant="8" id="WZ6-0I-WNE"/>
-                            <constraint firstItem="DGQ-gr-j3j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sfn-ua-Wk9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c8Y-ov-UXo" secondAttribute="bottom" id="1XR-ks-jeF"/>
+                            <constraint firstItem="k7q-tQ-IvJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Abv-g0-Eda"/>
+                            <constraint firstItem="k7q-tQ-IvJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="An8-RH-WQ0"/>
+                            <constraint firstItem="c8Y-ov-UXo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UC3-UN-jS5"/>
+                            <constraint firstItem="DGQ-gr-j3j" firstAttribute="top" secondItem="k7q-tQ-IvJ" secondAttribute="bottom" constant="8" id="UmT-DC-5i3"/>
+                            <constraint firstAttribute="trailing" secondItem="c8Y-ov-UXo" secondAttribute="trailing" id="be4-bP-weA"/>
+                            <constraint firstItem="c8Y-ov-UXo" firstAttribute="top" secondItem="DGQ-gr-j3j" secondAttribute="bottom" constant="8" id="lh5-cW-3pP"/>
+                            <constraint firstItem="DGQ-gr-j3j" firstAttribute="centerX" secondItem="k7q-tQ-IvJ" secondAttribute="centerX" id="r27-jd-J7R"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="signInOutButton" destination="DGQ-gr-j3j" id="jth-pT-Rby"/>
+                        <outlet property="tableView" destination="c8Y-ov-UXo" id="kjO-FE-QUQ"/>
                         <outlet property="titleLabel" destination="k7q-tQ-IvJ" id="5Kx-pR-vXL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="115.59220389805098"/>
         </scene>
     </scenes>
 </document>

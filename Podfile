@@ -10,6 +10,9 @@ target 'PicasaPhotos' do
   pod 'RealmSwift'
   pod 'Alamofire'
   pod 'SWXMLHash'
+  pod 'RxDataSources'
+  pod 'RxRealm'
+  pod 'SDWebImage'
 
   # Pods for PicasaPhotos
 

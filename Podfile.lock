@@ -42,7 +42,16 @@ PODS:
     - Realm (= 2.8.0)
   - RxCocoa (3.5.0):
     - RxSwift (~> 3.4)
+  - RxDataSources (1.0.3):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
+  - RxRealm (0.6.0):
+    - RealmSwift (~> 2.5)
+    - RxSwift (~> 3.2)
   - RxSwift (3.5.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SWXMLHash (4.1.0)
 
 DEPENDENCIES:
@@ -50,7 +59,10 @@ DEPENDENCIES:
   - Google/SignIn
   - RealmSwift
   - RxCocoa
+  - RxDataSources
+  - RxRealm
   - RxSwift
+  - SDWebImage
   - SWXMLHash
 
 SPEC CHECKSUMS:
@@ -66,9 +78,12 @@ SPEC CHECKSUMS:
   Realm: 929243ad2b618b3232e70658bedc61110e7563f1
   RealmSwift: 5b7079b891f2833d1849294161ba3e092bbda3f6
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
+  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
+  RxRealm: 323de579b50b5e0f4a3e087d5925021f976ffaf1
   RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SWXMLHash: 21340633daddd9aaf5c625ae92a26ca6dcdbfe1b
 
-PODFILE CHECKSUM: 138a29949f693433a592838f88fedc1e01db665c
+PODFILE CHECKSUM: 075a9d33c6e65a3c0221c66fc75d6316b1b70e2b
 
 COCOAPODS: 1.2.1

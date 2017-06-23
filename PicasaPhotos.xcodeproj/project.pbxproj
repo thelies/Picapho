@@ -23,6 +23,7 @@
 		DE41F4281EFBE9F900B1A1A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */; };
 		DE41F42B1EFC240C00B1A1A1 /* StoryboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */; };
 		DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */; };
+		DE77E3021EFC8E3400993B7C /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77E3011EFC8E3400993B7C /* UserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardUtil.swift; sourceTree = "<group>"; };
 		DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewController.swift; sourceTree = "<group>"; };
+		DE77E3011EFC8E3400993B7C /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 			children = (
 				DE41F4271EFBE9F900B1A1A1 /* LoginViewController.swift */,
 				DE41F42E1EFC86EE00B1A1A1 /* AlbumListViewController.swift */,
+				DE77E3011EFC8E3400993B7C /* UserViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE41F42B1EFC240C00B1A1A1 /* StoryboardUtil.swift in Sources */,
+				DE77E3021EFC8E3400993B7C /* UserViewController.swift in Sources */,
 				DE41F4211EFB9A6000B1A1A1 /* AlbumViewModel.swift in Sources */,
 				DE41F4161EFB55D000B1A1A1 /* APIService.swift in Sources */,
 				DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */,

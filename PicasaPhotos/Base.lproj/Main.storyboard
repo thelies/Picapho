@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,41 +42,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMV-0c-oYy">
-                                <rect key="frame" x="166" y="28" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQZ-pV-47m">
-                                <rect key="frame" x="164" y="57" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="signOut:" destination="63P-99-g98" eventType="touchUpInside" id="w9Q-FT-MGX"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MQZ-UX-qXs">
-                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nQZ-pV-47m" firstAttribute="top" secondItem="GMV-0c-oYy" secondAttribute="bottom" constant="8" id="1OO-Dh-7vg"/>
-                            <constraint firstItem="GMV-0c-oYy" firstAttribute="centerX" secondItem="AUg-it-1QD" secondAttribute="centerX" id="BID-7U-g1J"/>
                             <constraint firstItem="MQZ-UX-qXs" firstAttribute="leading" secondItem="AUg-it-1QD" secondAttribute="leading" id="Fyv-dd-bAU"/>
-                            <constraint firstItem="nQZ-pV-47m" firstAttribute="centerX" secondItem="GMV-0c-oYy" secondAttribute="centerX" id="JD2-ez-iaP"/>
-                            <constraint firstItem="MQZ-UX-qXs" firstAttribute="top" secondItem="nQZ-pV-47m" secondAttribute="bottom" constant="8" id="Q1u-1M-C4G"/>
+                            <constraint firstItem="MQZ-UX-qXs" firstAttribute="top" secondItem="cTV-Vr-hyC" secondAttribute="bottom" id="e3J-4F-Rd4"/>
                             <constraint firstItem="4nJ-Lu-taY" firstAttribute="top" secondItem="MQZ-UX-qXs" secondAttribute="bottom" id="oUZ-j0-Vbe"/>
                             <constraint firstAttribute="trailing" secondItem="MQZ-UX-qXs" secondAttribute="trailing" id="qU1-Pi-Zh8"/>
-                            <constraint firstItem="GMV-0c-oYy" firstAttribute="top" secondItem="cTV-Vr-hyC" secondAttribute="bottom" constant="8" id="uBx-qZ-q3S"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Albums" image="Albums" selectedImage="SelectedAlbums" id="2G8-nJ-kTQ"/>
                     <connections>
-                        <outlet property="signOutButton" destination="nQZ-pV-47m" id="JEV-Hl-d0F"/>
                         <outlet property="tableView" destination="MQZ-UX-qXs" id="aSz-a8-r1M"/>
-                        <outlet property="titleLabel" destination="GMV-0c-oYy" id="ZQS-n2-qBV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -84,7 +66,7 @@
         <!--User-->
         <scene sceneID="m33-vo-CWm">
             <objects>
-                <viewController id="DNa-bB-USw" sceneMemberID="viewController">
+                <viewController id="DNa-bB-USw" customClass="UserViewController" customModule="PicasaPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TQK-07-fSs"/>
                         <viewControllerLayoutGuide type="bottom" id="VMJ-V8-iVr"/>
@@ -92,13 +74,72 @@
                     <view key="view" contentMode="scaleToFill" id="gXy-nj-5Gd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="yBD-We-54F">
+                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="RYF-tt-qWD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd2-Wf-7pL">
+                                <rect key="frame" x="166.5" y="236" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyc-nJ-Hyb">
+                                <rect key="frame" x="166.5" y="265" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mW-74-2pr">
+                                <rect key="frame" x="164" y="572" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="signOut:" destination="DNa-bB-USw" eventType="touchUpInside" id="l2e-kd-DzR"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jad-6y-6xl">
+                                <rect key="frame" x="137" y="128" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="hbg-1G-lv8"/>
+                                    <constraint firstAttribute="height" constant="100" id="mr7-Sg-F6z"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yBD-We-54F" firstAttribute="top" secondItem="TQK-07-fSs" secondAttribute="bottom" constant="8" id="DgN-Bj-a8j"/>
+                            <constraint firstItem="3mW-74-2pr" firstAttribute="centerX" secondItem="gXy-nj-5Gd" secondAttribute="centerX" id="DiU-zy-JS4"/>
+                            <constraint firstItem="jad-6y-6xl" firstAttribute="centerX" secondItem="gXy-nj-5Gd" secondAttribute="centerX" id="He3-OV-AD8"/>
+                            <constraint firstItem="wyc-nJ-Hyb" firstAttribute="centerX" secondItem="Qd2-Wf-7pL" secondAttribute="centerX" id="K99-ay-EZO"/>
+                            <constraint firstItem="yBD-We-54F" firstAttribute="centerX" secondItem="gXy-nj-5Gd" secondAttribute="centerX" id="SOc-mY-x4z"/>
+                            <constraint firstItem="VMJ-V8-iVr" firstAttribute="top" secondItem="3mW-74-2pr" secondAttribute="bottom" constant="16" id="VSB-MQ-SI0"/>
+                            <constraint firstItem="jad-6y-6xl" firstAttribute="top" secondItem="yBD-We-54F" secondAttribute="bottom" constant="-50" id="ZAU-jk-DRu"/>
+                            <constraint firstItem="Qd2-Wf-7pL" firstAttribute="top" secondItem="jad-6y-6xl" secondAttribute="bottom" constant="8" id="fCs-f6-dBy"/>
+                            <constraint firstItem="Qd2-Wf-7pL" firstAttribute="centerX" secondItem="jad-6y-6xl" secondAttribute="centerX" id="gYF-Re-w0h"/>
+                            <constraint firstItem="wyc-nJ-Hyb" firstAttribute="top" secondItem="Qd2-Wf-7pL" secondAttribute="bottom" constant="8" id="l4h-ld-tmH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yBD-We-54F" secondAttribute="trailing" constant="-16" id="orQ-Tz-L5H"/>
+                            <constraint firstItem="yBD-We-54F" firstAttribute="leading" secondItem="gXy-nj-5Gd" secondAttribute="leadingMargin" constant="-16" id="qy6-lp-Ecl"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="User" image="User" selectedImage="SelectedUser" id="hZj-Dc-qI8"/>
+                    <connections>
+                        <outlet property="avatarImage" destination="jad-6y-6xl" id="YwD-qq-hPO"/>
+                        <outlet property="emailLabel" destination="wyc-nJ-Hyb" id="9ll-6z-VJx"/>
+                        <outlet property="nameLabel" destination="Qd2-Wf-7pL" id="oqd-Io-HbS"/>
+                        <outlet property="signOutButton" destination="3mW-74-2pr" id="cd6-9b-ct0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KU3-el-KGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="-251"/>
+            <point key="canvasLocation" x="1808.8" y="-251.42428785607197"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0uH-h6-yU1">
@@ -122,6 +163,7 @@
     </scenes>
     <resources>
         <image name="Albums" width="25" height="25"/>
+        <image name="DefaultProfile" width="1500" height="814"/>
         <image name="Photos" width="25" height="25"/>
         <image name="SelectedAlbums" width="25" height="25"/>
         <image name="SelectedPhotos" width="25" height="25"/>

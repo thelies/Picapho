@@ -39,4 +39,8 @@ class AlbumViewModel {
             .map { _ in self.album.imageURL }.bind(to: self.imageURL)
             .addDisposableTo(disposeBag)
     }
+    
+    func fetchPhotos() {
+        APIService.sharedInstance.fetchPhotosInAlbum(album: album)
+    }
 }

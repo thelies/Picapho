@@ -17,6 +17,7 @@ class Album: Object {
     dynamic var access = ""
     dynamic var numphotos = 0
     dynamic var imageURL = ""
+    var photos = List<Photo>()
     
     override static func primaryKey() -> String? {
         return "id"

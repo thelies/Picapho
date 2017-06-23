@@ -11,6 +11,7 @@ import GGLSignIn
 import GoogleSignIn
 import RxSwift
 import RxDataSources
+import RealmSwift
 
 class AlbumListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
@@ -42,6 +43,17 @@ class AlbumListViewController: UIViewController {
     func bind() {
         viewModel.albums
             .bind(to: tableView.rx.items(dataSource: dataSource))
+            .addDisposableTo(disposeBag)
+        
+        tableView.rx.itemSelected
+            .map { [unowned self] indexPath in
+                try! self.dataSource.model(at: indexPath) as! Album
+            }
+            .subscribe(onNext: { [unowned self] album in
+                let albumViewController = self.storyboard?.instantiateViewController(withIdentifier: AlbumViewController.identifier) as! AlbumViewController
+                albumViewController.viewModel = AlbumViewModel(album: album)
+                self.navigationController?.pushViewController(albumViewController, animated: true)
+            })
             .addDisposableTo(disposeBag)
     }
     

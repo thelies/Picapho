@@ -14,7 +14,7 @@ import RealmSwift
 
 protocol APIServiceProtocol {
     func fetchAlbumsList()
-    func fetchPhotosList()
+    func fetchPhotosInAlbum(album: Album)
     // Create Album
     // Upload Image
     // Download Image
@@ -50,13 +50,40 @@ class APIService: APIServiceProtocol {
                     for child in feedData.children {
                         if child.element?.name == "entry" {
                             let album = Album(indexer: child)
-                            realm.create(Album.self, value: album, update: true)
+                            realm.add(album, update: true)
                         }
                     }
                 }
         }
     }
     
-    func fetchPhotosList() {
+    func fetchPhotosInAlbum(album: Album) {
+        let url = "\(baseURL)/feed/api/user/\(userID)/albumid/\(album.id)"
+        let feedFields = "icon, openSearch:totalResults, openSearch:startIndex"
+        let entryFields = "entry(title, gphoto:id, gphoto:access, media:group/media:content, media:group/media:thumbnail, georss:where, published, updated)"
+        let params: Parameters = [
+            "kind": "photo",
+            "access": "all",
+            "access_token": "\(accessToken)",
+            "fields": "\(feedFields),\(entryFields)",
+            "max-results": 100
+        ]
+        
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .response { response in
+                let xmlsData = SWXMLHash.parse(response.data!)
+                let feedData = xmlsData["feed"]
+                let realm = try! Realm()
+                try! realm.write {
+                    for child in feedData.children {
+                        if child.element?.name == "entry" {
+                            let photo = Photo(indexer: child)
+                            realm.add(photo, update: true)
+                            album.photos.append(photo)
+                        }
+                    }
+                    realm.add(album, update: true)
+                }
+        }
     }
 }

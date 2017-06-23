@@ -40,6 +40,16 @@ class PhotoListViewController: UIViewController {
         viewModel.photos
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
+        collectionView.rx.itemSelected
+            .map { [unowned self] indexPath in
+                try! self.dataSource.model(at: indexPath) as! Photo
+            }
+            .subscribe(onNext: { [unowned self] photo in
+                let photoViewController = self.storyboard?.instantiateViewController(withIdentifier: PhotoViewController.identifier) as! PhotoViewController
+                photoViewController.viewModel = PhotoViewModel(photo: photo)
+                self.navigationController?.pushViewController(photoViewController, animated: true)
+            })
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {

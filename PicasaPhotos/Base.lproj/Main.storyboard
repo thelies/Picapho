@@ -279,7 +279,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VkQ-ot-caR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Photos" image="Photos" selectedImage="SelectedPhotos" id="xTA-zl-AaE"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nrh-K1-pAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nrh-K1-pAv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

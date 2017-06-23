@@ -20,6 +20,7 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSaveButton()
         bind()
     }
     
@@ -30,6 +31,27 @@ class PhotoViewController: UIViewController {
             .addDisposableTo(disposeBag)
         viewModel.title.asDriver().drive(self.navigationItem.rx.title)
             .addDisposableTo(disposeBag)
+    }
+
+    func addSaveButton() {
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = saveButton
+    }
+
+    func save() {
+        UIImageWriteToSavedPhotosAlbum(photoImage.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "New image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -67,7 +67,7 @@ class APIService: APIServiceProtocol {
             "access": "all",
             "access_token": "\(accessToken)",
             "fields": "\(feedFields),\(entryFields)",
-            "max-results": 100
+            "max-results": 20
         ]
         
         Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
@@ -97,7 +97,7 @@ class APIService: APIServiceProtocol {
             "access": "all",
             "access_token": "\(accessToken)",
             "fields": "\(feedFields),\(entryFields)",
-            "max-results": 10
+            "max-results": 20
         ]
         
         Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)

@@ -17,6 +17,7 @@ class AlbumViewModel {
     let access = Variable<String>("")
     let numphotos = Variable<Int>(0)
     let imageURL = Variable<String>("")
+    let photos = Variable<[PhotoSection]>([])
     
     private let disposeBag = DisposeBag()
     let album: Album
@@ -37,6 +38,15 @@ class AlbumViewModel {
             .addDisposableTo(disposeBag)
         album.rx.observe(String.self, "imageURL")
             .map { _ in self.album.imageURL }.bind(to: self.imageURL)
+            .addDisposableTo(disposeBag)
+        album.rx.observe(List<Photo>.self, "photos")
+            .map { _ in
+                var photos = [Photo]()
+                for (_, photo) in self.album.photos.enumerated() {
+                    photos.append(photo)
+                }
+                return [PhotoSection(model: "", items: photos)]
+            }.bind(to: self.photos)
             .addDisposableTo(disposeBag)
     }
     

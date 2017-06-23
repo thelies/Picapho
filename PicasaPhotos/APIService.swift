@@ -25,8 +25,12 @@ class APIService: APIServiceProtocol {
     static let sharedInstance = APIService()
     
     let baseURL = "https://picasaweb.google.com/data"
-    let userID = GIDSignIn.sharedInstance().currentUser.userID ?? "default"
-    let accessToken = GIDSignIn.sharedInstance().currentUser.authentication.accessToken ?? ""
+    var userID: String {
+        return GIDSignIn.sharedInstance().currentUser.userID ?? "default"
+    }
+    var accessToken: String {
+        return GIDSignIn.sharedInstance().currentUser.authentication.accessToken ?? ""
+    }
     let headers: HTTPHeaders = [
         "GData-Version": "3"
     ]
@@ -67,7 +71,7 @@ class APIService: APIServiceProtocol {
             "access": "all",
             "access_token": "\(accessToken)",
             "fields": "\(feedFields),\(entryFields)",
-            "max-results": 20
+            "max-results": 100
         ]
         
         Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)

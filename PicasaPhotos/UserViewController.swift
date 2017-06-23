@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import GoogleSignIn
+import RealmSwift
 
 class UserViewController: UIViewController {
 
@@ -37,6 +38,10 @@ class UserViewController: UIViewController {
     }
 
     @IBAction func signOut(_ sender: Any) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
         GIDSignIn.sharedInstance().signOut()
         (UIApplication.shared.delegate as! AppDelegate).showLogin()
     }

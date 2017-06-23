@@ -16,15 +16,19 @@ typealias AlbumSection = AnimatableSectionModel<String, Album>
 
 class AlbumListViewModel {
     var albums: Observable<[AlbumSection]> {
-        return fetchAlbums()
+        return fetchAlbumsFromDB()
             .map { results in
                 return [AlbumSection(model: "", items: results.toArray())]
         }
     }
     
-    func fetchAlbums() -> Observable<Results<Album>> {
+    func fetchAlbumsFromDB() -> Observable<Results<Album>> {
         let realm = try! Realm()
         let albums = realm.objects(Album.self)
         return Observable.collection(from: albums)
+    }
+    
+    func fetchAlbums() {
+        APIService.sharedInstance.fetchAlbumsList()
     }
 }

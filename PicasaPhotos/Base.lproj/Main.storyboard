@@ -13,7 +13,7 @@
         <!--Photos-->
         <scene sceneID="Gb4-hc-fKE">
             <objects>
-                <viewController id="GHC-FN-4ZV" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GHC-FN-4ZV" customClass="PhotoListViewController" customModule="PicasaPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MZ9-9V-GCn"/>
                         <viewControllerLayoutGuide type="bottom" id="fDY-1y-nli"/>
@@ -21,13 +21,35 @@
                     <view key="view" contentMode="scaleToFill" id="O07-ca-8Ho">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UTp-zY-U36">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rzD-hg-gfe">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UTp-zY-U36" firstAttribute="top" secondItem="MZ9-9V-GCn" secondAttribute="bottom" id="Byn-tC-zlD"/>
+                            <constraint firstItem="UTp-zY-U36" firstAttribute="leading" secondItem="O07-ca-8Ho" secondAttribute="leading" id="G9A-7E-WSp"/>
+                            <constraint firstItem="fDY-1y-nli" firstAttribute="top" secondItem="UTp-zY-U36" secondAttribute="bottom" id="bdE-hM-vTO"/>
+                            <constraint firstAttribute="trailing" secondItem="UTp-zY-U36" secondAttribute="trailing" id="tlE-At-JU6"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" image="Photos" selectedImage="SelectedPhotos" id="xTA-zl-AaE"/>
+                    <navigationItem key="navigationItem" title="Photos" id="VzY-4J-CGE"/>
+                    <connections>
+                        <outlet property="collectionView" destination="UTp-zY-U36" id="q4V-cU-qGA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndK-dw-oyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="503"/>
+            <point key="canvasLocation" x="2748" y="502.39880059970017"/>
         </scene>
         <!--Albums-->
         <scene sceneID="8Jv-sb-fdM">
@@ -61,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TOs-QQ-Uv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3528.8000000000002" y="113.79310344827587"/>
+            <point key="canvasLocation" x="4468" y="113.79310344827587"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="x8Z-vE-HA2">
@@ -101,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHE-iH-JVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4255.1999999999998" y="113.79310344827587"/>
+            <point key="canvasLocation" x="5194.3999999999996" y="113.79310344827587"/>
         </scene>
         <!--User-->
         <scene sceneID="m33-vo-CWm">
@@ -192,7 +214,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="DNa-bB-USw" kind="relationship" relationship="viewControllers" id="9LN-8v-6qu"/>
-                        <segue destination="GHC-FN-4ZV" kind="relationship" relationship="viewControllers" id="2GX-EZ-ofP"/>
+                        <segue destination="VkQ-ot-caR" kind="relationship" relationship="viewControllers" id="2GX-EZ-ofP"/>
                         <segue destination="oPx-Ir-E2L" kind="relationship" relationship="viewControllers" id="u5l-D7-M4F"/>
                     </connections>
                 </tabBarController>
@@ -206,7 +228,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oPx-Ir-E2L" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Albums" image="Albums" selectedImage="SelectedAlbums" id="2G8-nJ-kTQ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lEK-F5-4yy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lEK-F5-4yy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -217,7 +239,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O7g-NP-9P6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2589.5999999999999" y="113.79310344827587"/>
+            <point key="canvasLocation" x="3528.8000000000002" y="113.79310344827587"/>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="SNi-wR-phg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VkQ-ot-caR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Photos" image="Photos" selectedImage="SelectedPhotos" id="xTA-zl-AaE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nrh-K1-pAv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GHC-FN-4ZV" kind="relationship" relationship="rootViewController" id="dvd-Mb-Zla"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qI3-Qs-2YW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1808.8" y="502.39880059970017"/>
         </scene>
     </scenes>
     <resources>

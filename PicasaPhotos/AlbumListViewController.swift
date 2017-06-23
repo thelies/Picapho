@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import GGLSignIn
-import GoogleSignIn
 import RxSwift
 import RxDataSources
-import RealmSwift
 
 class AlbumListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
@@ -28,7 +25,7 @@ class AlbumListViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         configDataSource()
         bind()
-        APIService.sharedInstance.fetchAlbumsList()
+        viewModel.fetchAlbums()
     }
     
     func configDataSource() {

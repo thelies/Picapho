@@ -37,3 +37,9 @@ class Photo: Object {
         self.updated = indexer["updated"].element!.text
     }
 }
+
+extension Photo: IdentifiableType {
+    var identity: String {
+        return self.isInvalidated ? "" : id
+    }
+}

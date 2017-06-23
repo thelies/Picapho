@@ -15,6 +15,7 @@ import RealmSwift
 protocol APIServiceProtocol {
     func fetchAlbumsList()
     func fetchPhotosInAlbum(album: Album)
+    func fetchPhotosList()
     // Create Album
     // Upload Image
     // Download Image
@@ -83,6 +84,34 @@ class APIService: APIServiceProtocol {
                         }
                     }
                     realm.add(album, update: true)
+                }
+        }
+    }
+    
+    func fetchPhotosList() {
+        let url = "\(baseURL)/feed/api/user/\(userID)"
+        let feedFields = "icon, openSearch:totalResults, openSearch:startIndex"
+        let entryFields = "entry(title, gphoto:id, gphoto:access, media:group/media:content, media:group/media:thumbnail, georss:where, published, updated)"
+        let params: Parameters = [
+            "kind": "photo",
+            "access": "all",
+            "access_token": "\(accessToken)",
+            "fields": "\(feedFields),\(entryFields)",
+            "max-results": 10
+        ]
+        
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .response { response in
+                let xmlsData = SWXMLHash.parse(response.data!)
+                let feedData = xmlsData["feed"]
+                let realm = try! Realm()
+                try! realm.write {
+                    for child in feedData.children {
+                        if child.element?.name == "entry" {
+                            let photo = Photo(indexer: child)
+                            realm.add(photo, update: true)
+                        }
+                    }
                 }
         }
     }

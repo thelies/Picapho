@@ -43,13 +43,13 @@ class AlbumListViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         tableView.rx.itemSelected
-            .map { [unowned self] indexPath in
-                try! self.dataSource.model(at: indexPath) as! Album
+            .map { [weak self] indexPath in
+                try! self?.dataSource.model(at: indexPath) as! Album
             }
-            .subscribe(onNext: { [unowned self] album in
-                let albumViewController = self.storyboard?.instantiateViewController(withIdentifier: AlbumViewController.identifier) as! AlbumViewController
+            .subscribe(onNext: { [weak self] album in
+                let albumViewController = self?.storyboard?.instantiateViewController(withIdentifier: AlbumViewController.identifier) as! AlbumViewController
                 albumViewController.viewModel = AlbumViewModel(album: album)
-                self.navigationController?.pushViewController(albumViewController, animated: true)
+                self?.navigationController?.pushViewController(albumViewController, animated: true)
             })
             .addDisposableTo(disposeBag)
     }

@@ -25,22 +25,22 @@ class AlbumViewModel {
     init(album: Album) {
         self.album = album
         album.rx.observe(String.self, "id")
-            .map { _ in self.album.id }.bind(to: self.id)
+            .map { [unowned self] _ in self.album.id }.bind(to: self.id)
             .addDisposableTo(disposeBag)
         album.rx.observe(String.self, "title")
-            .map { _ in self.album.title }.bind(to: self.title)
+            .map { [unowned self] _ in self.album.title }.bind(to: self.title)
             .addDisposableTo(disposeBag)
         album.rx.observe(String.self, "access")
-            .map { _ in self.album.access }.bind(to: self.access)
+            .map { [unowned self] _ in self.album.access }.bind(to: self.access)
             .addDisposableTo(disposeBag)
         album.rx.observe(String.self, "numphotos")
-            .map { _ in self.album.numphotos }.bind(to: self.numphotos)
+            .map { [unowned self] _ in self.album.numphotos }.bind(to: self.numphotos)
             .addDisposableTo(disposeBag)
         album.rx.observe(String.self, "imageURL")
-            .map { _ in self.album.imageURL }.bind(to: self.imageURL)
+            .map { [unowned self] _ in self.album.imageURL }.bind(to: self.imageURL)
             .addDisposableTo(disposeBag)
         album.rx.observe(List<Photo>.self, "photos")
-            .map { _ in
+            .map { [unowned self] _ in
                 var photos = [Photo]()
                 for (_, photo) in self.album.photos.enumerated() {
                     photos.append(photo)

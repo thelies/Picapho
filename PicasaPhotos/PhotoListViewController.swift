@@ -51,6 +51,11 @@ class PhotoListViewController: UIViewController {
             })
             .addDisposableTo(disposeBag)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Resources in Album List: \(RxSwift.Resources.total)")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

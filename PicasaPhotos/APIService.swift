@@ -84,7 +84,9 @@ class APIService: APIServiceProtocol {
                         if child.element?.name == "entry" {
                             let photo = Photo(indexer: child)
                             realm.add(photo, update: true)
-                            album.photos.append(photo)
+                            if !album.photos.contains(photo) {
+                                album.photos.append(photo)
+                            }
                         }
                     }
                     realm.add(album, update: true)

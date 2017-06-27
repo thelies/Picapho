@@ -17,10 +17,13 @@ class PhotoListViewController: UIViewController {
     var viewModel = PhotoListViewModel()
     var dataSource = RxCollectionViewSectionedAnimatedDataSource<PhotoSection>()
     let disposeBag = DisposeBag()
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePicker.delegate = self
+        addUploadButton()
         collectionView.register(UINib(nibName: PhotoCell.identifier, bundle: nil), forCellWithReuseIdentifier: PhotoCell.identifier)
         configDataSource()
         bind()
@@ -51,7 +54,18 @@ class PhotoListViewController: UIViewController {
             })
             .addDisposableTo(disposeBag)
     }
+
+    func addUploadButton() {
+        let uploadButton = UIBarButtonItem(title: "Upload", style: .plain, target: self, action: #selector(upload))
+        navigationItem.rightBarButtonItem = uploadButton
+    }
     
+    func upload() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Resources in Album List: \(RxSwift.Resources.total)")
@@ -59,5 +73,18 @@ class PhotoListViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension PhotoListViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            viewModel.uploadPhoto(image: pickedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

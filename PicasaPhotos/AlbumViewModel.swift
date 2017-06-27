@@ -53,4 +53,8 @@ class AlbumViewModel {
     func fetchPhotos() {
         APIService.sharedInstance.fetchPhotosInAlbum(album: album)
     }
+    
+    func uploadPhoto(image: UIImage) {
+        APIService.sharedInstance.uploadPhoto(image: image, album: album)
+    }
 }

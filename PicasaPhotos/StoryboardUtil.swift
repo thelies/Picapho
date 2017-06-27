@@ -17,3 +17,9 @@ class StoryboardUtil {
         return UIStoryboard(name: "Login", bundle: nil)
     }
 }
+
+func generateNameByDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd_hhmmss"
+    return dateFormatter.string(from: date)
+}

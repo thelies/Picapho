@@ -31,4 +31,8 @@ class PhotoListViewModel {
     func fetchPhotos() {
         APIService.sharedInstance.fetchPhotosList()
     }
+    
+    func uploadPhoto(image: UIImage) {
+        APIService.sharedInstance.uploadPhoto(image: image, album: nil)
+    }
 }

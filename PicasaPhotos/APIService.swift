@@ -11,12 +11,18 @@ import Alamofire
 import GoogleSignIn
 import SWXMLHash
 import RealmSwift
+import RxSwift
+
+enum RequestResult {
+    case Success
+    case Error(NSError)
+}
 
 protocol APIServiceProtocol {
-    func fetchAlbumsList()
-    func fetchPhotosInAlbum(album: Album)
-    func fetchPhotosList()
-    func uploadPhoto(image: UIImage, album: Album?)
+    func fetchAlbumsList() -> Observable<RequestResult>
+    func fetchPhotosInAlbum(album: Album) -> Observable<RequestResult>
+    func fetchPhotosList() -> Observable<RequestResult>
+    func uploadPhoto(image: UIImage, album: Album?) -> Observable<RequestResult>
 }
 
 class APIService: APIServiceProtocol {
@@ -34,7 +40,47 @@ class APIService: APIServiceProtocol {
         return GIDSignIn.sharedInstance().currentUser.authentication.accessToken ?? ""
     }
     
-    func fetchAlbumsList() {
+    func request(url: URLConvertible, method: HTTPMethod, parameters: Parameters, headers: HTTPHeaders) -> Observable<XMLIndexer> {
+        return Observable.create { observer in
+            Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+                .validate(statusCode: 200..<500)
+                .responseData { response in
+                    if let responseCode = response.response?.statusCode {
+                        switch responseCode {
+                        case 200..<300:
+                            let xmlData = SWXMLHash.parse(response.data!)
+                            observer.onNext(xmlData)
+                            observer.onCompleted()
+                        default:
+                            observer.onError(Util.ErrorWithResponseStatusCode(statusCode: responseCode))
+                        }
+                    }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func upload(data: Data, to: URLConvertible, method: HTTPMethod, headers: HTTPHeaders) -> Observable<XMLIndexer> {
+        return Observable.create { observer in
+            Alamofire.upload(data, to: to, method: method, headers: headers)
+                .validate(statusCode: 200..<500)
+                .responseData { response in
+                    if let responseCode = response.response?.statusCode {
+                        switch responseCode {
+                        case 200..<300:
+                            let xmlData = SWXMLHash.parse(response.data!)
+                            observer.onNext(xmlData)
+                            observer.onCompleted()
+                        default:
+                            observer.onError(Util.ErrorWithResponseStatusCode(statusCode: responseCode))
+                        }
+                    }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func fetchAlbumsList() -> Observable<RequestResult> {
         let url = "\(baseURL)/feed/api/user/\(userID)"
         let feedFields = "icon, openSearch:totalResults, openSearch:startIndex"
         let entryFields = "entry(title, gphoto:id, gphoto:numphotos, gphoto:access, media:group/media:content, media:group/media:thumbnail)"
@@ -45,10 +91,9 @@ class APIService: APIServiceProtocol {
             "fields": "\(feedFields),\(entryFields)",
         ]
         
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
-            .response { response in
-                let xmlsData = SWXMLHash.parse(response.data!)
-                let feedData = xmlsData["feed"]
+        return request(url: url, method: .get, parameters: params, headers: headers)
+            .map { data -> RequestResult in
+                let feedData = data["feed"]
                 let realm = try! Realm()
                 try! realm.write {
                     for child in feedData.children {
@@ -58,10 +103,12 @@ class APIService: APIServiceProtocol {
                         }
                     }
                 }
-        }
+                
+                return RequestResult.Success
+            }
     }
     
-    func fetchPhotosInAlbum(album: Album) {
+    func fetchPhotosInAlbum(album: Album) -> Observable<RequestResult> {
         let url = "\(baseURL)/feed/api/user/\(userID)/albumid/\(album.id)"
         let feedFields = "icon, openSearch:totalResults, openSearch:startIndex"
         let entryFields = "entry(title, gphoto:id, gphoto:access, media:group/media:content, media:group/media:thumbnail, georss:where, published, updated)"
@@ -73,10 +120,9 @@ class APIService: APIServiceProtocol {
             "max-results": 100
         ]
         
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
-            .response { response in
-                let xmlsData = SWXMLHash.parse(response.data!)
-                let feedData = xmlsData["feed"]
+        return request(url: url, method: .get, parameters: params, headers: headers)
+            .map { data -> RequestResult in
+                let feedData = data["feed"]
                 let realm = try! Realm()
                 try! realm.write {
                     for child in feedData.children {
@@ -90,10 +136,12 @@ class APIService: APIServiceProtocol {
                     }
                     realm.add(album, update: true)
                 }
-        }
+                
+                return RequestResult.Success
+            }
     }
     
-    func fetchPhotosList() {
+    func fetchPhotosList() -> Observable<RequestResult> {
         let url = "\(baseURL)/feed/api/user/\(userID)"
         let feedFields = "icon, openSearch:totalResults, openSearch:startIndex"
         let entryFields = "entry(title, gphoto:id, gphoto:access, media:group/media:content, media:group/media:thumbnail, georss:where, published, updated)"
@@ -105,10 +153,9 @@ class APIService: APIServiceProtocol {
             "max-results": 20
         ]
         
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
-            .response { response in
-                let xmlsData = SWXMLHash.parse(response.data!)
-                let feedData = xmlsData["feed"]
+        return request(url: url, method: .get, parameters: params, headers: headers)
+            .map { data -> RequestResult in
+                let feedData = data["feed"]
                 let realm = try! Realm()
                 try! realm.write {
                     for child in feedData.children {
@@ -118,10 +165,12 @@ class APIService: APIServiceProtocol {
                         }
                     }
                 }
-        }
+                
+                return RequestResult.Success
+            }
     }
     
-    func uploadPhoto(image: UIImage, album: Album?) {
+    func uploadPhoto(image: UIImage, album: Album?) -> Observable<RequestResult> {
         let imageData = UIImageJPEGRepresentation(image, 1.0)
         let albumID = album?.id ?? "default"
         let url = "\(baseURL)/feed/api/user/\(userID)/albumid/\(albumID)?access_token=\(accessToken)"
@@ -129,20 +178,23 @@ class APIService: APIServiceProtocol {
         newHeaders["Content-Type"] = "image/jpeg"
         newHeaders["Content-Length"] = "\(imageData!.count)"
         newHeaders["Slug"] = "\(generateNameByDate(date: Date()))"
-
-        Alamofire.upload(imageData!, to: url, method: .post, headers: newHeaders).response { response in
-            let xmlsData = SWXMLHash.parse(response.data!)
-            let feedData = xmlsData["entry"]
-            let realm = try! Realm()
-            try! realm.write {
-                let photo = Photo(indexer: feedData)
-                realm.add(photo, update: true)
-                if let album = album, !album.photos.contains(photo) {
-                    album.photos.append(photo)
-                    album.numphotos += 1
-                    realm.add(album, update: true)
+        
+        return upload(data: imageData!, to: url, method: .post, headers: newHeaders)
+            .map { data -> RequestResult in
+                let feedData = data["entry"]
+                let realm = try! Realm()
+                try! realm.write {
+                    let photo = Photo(indexer: feedData)
+                    realm.add(photo, update: true)
+                    if let album = album, !album.photos.contains(photo) {
+                        album.photos.append(photo)
+                        album.numphotos += 1
+                        realm.add(album, update: true)
+                    }
                 }
+                
+                return RequestResult.Success
             }
-        }
     }
+
 }

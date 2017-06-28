@@ -13,6 +13,7 @@ target 'PicasaPhotos' do
   pod 'RxDataSources'
   pod 'RxRealm'
   pod 'SDWebImage'
+  pod 'PKHUD'
 
   # Pods for PicasaPhotos
 

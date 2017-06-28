@@ -28,11 +28,11 @@ class PhotoListViewModel {
         return Observable.collection(from: photos)
     }
     
-    func fetchPhotos() {
-        APIService.sharedInstance.fetchPhotosList()
+    func fetchPhotos() -> Observable<RequestResult> {
+        return APIService.sharedInstance.fetchPhotosList()
     }
     
-    func uploadPhoto(image: UIImage) {
-        APIService.sharedInstance.uploadPhoto(image: image, album: nil)
+    func uploadPhoto(image: UIImage) -> Observable<RequestResult> {
+        return APIService.sharedInstance.uploadPhoto(image: image, album: nil)
     }
 }

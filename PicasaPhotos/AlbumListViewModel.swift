@@ -28,7 +28,7 @@ class AlbumListViewModel {
         return Observable.collection(from: albums)
     }
     
-    func fetchAlbums() {
-        APIService.sharedInstance.fetchAlbumsList()
+    func fetchAlbums() -> Observable<RequestResult> {
+        return APIService.sharedInstance.fetchAlbumsList()
     }
 }

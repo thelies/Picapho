@@ -50,11 +50,11 @@ class AlbumViewModel {
             .addDisposableTo(disposeBag)
     }
     
-    func fetchPhotos() {
-        APIService.sharedInstance.fetchPhotosInAlbum(album: album)
+    func fetchPhotos() -> Observable<RequestResult> {
+        return APIService.sharedInstance.fetchPhotosInAlbum(album: album)
     }
     
-    func uploadPhoto(image: UIImage) {
-        APIService.sharedInstance.uploadPhoto(image: image, album: album)
+    func uploadPhoto(image: UIImage) -> Observable<RequestResult> {
+        return APIService.sharedInstance.uploadPhoto(image: image, album: album)
     }
 }

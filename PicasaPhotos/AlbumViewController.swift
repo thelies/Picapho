@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import PKHUD
 
 class AlbumViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class AlbumViewController: UIViewController {
     var dataSource = RxCollectionViewSectionedAnimatedDataSource<PhotoSection>()
     let disposeBag = DisposeBag()
     let imagePicker = UIImagePickerController()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,21 @@ class AlbumViewController: UIViewController {
         imagePicker.delegate = self
         addUploadButton()
         collectionView.register(UINib(nibName: PhotoCell.identifier, bundle: nil), forCellWithReuseIdentifier: PhotoCell.identifier)
+        addRefreshControl()
         configDataSource()
         bind()
+        HUD.show(.progress)
         viewModel.fetchPhotos()
+            .subscribe(
+                onNext: { _ in
+                    HUD.hide()
+                    print("request success")
+            }, onError: { error in
+                HUD.hide()
+                let code = (error as NSError).code
+                print("code: \(code)")
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func configDataSource() {
@@ -71,6 +85,25 @@ class AlbumViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func addRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView.addSubview(refreshControl)
+    }
+    
+    func refresh() {
+        viewModel.fetchPhotos()
+            .subscribe(
+                onNext: { _ in
+                    self.refreshControl.endRefreshing()
+            }, onError: { error in
+                self.refreshControl.endRefreshing()
+                let code = (error as NSError).code
+                print("code: \(code)")
+            })
+            .addDisposableTo(disposeBag)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -79,7 +112,19 @@ class AlbumViewController: UIViewController {
 extension AlbumViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            HUD.show(.progress)
             viewModel.uploadPhoto(image: pickedImage)
+                .subscribe(
+                    onNext: { _ in
+                        HUD.flash(.success, delay: 1.0)
+                        print("request success")
+                }, onError: { error in
+                    HUD.show(.error)
+                    HUD.hide(afterDelay: 2.0)
+                    let code = (error as NSError).code
+                    print("code: \(code)")
+                })
+                .addDisposableTo(disposeBag)
         }
         dismiss(animated: true, completion: nil)
     }

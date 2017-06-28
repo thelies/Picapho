@@ -32,6 +32,8 @@
 		DE77E3161EFCCCF800993B7C /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77E3151EFCCCF800993B7C /* PhotoListViewController.swift */; };
 		DE77E3181EFCCE9D00993B7C /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77E3171EFCCE9D00993B7C /* PhotoListViewModel.swift */; };
 		DE77E31A1EFCE54E00993B7C /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77E3191EFCE54E00993B7C /* PhotoViewController.swift */; };
+		DE93ACCC1F025DF700717FC1 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE93ACCB1F025DF700717FC1 /* Constant.swift */; };
+		DE93ACCE1F025E0900717FC1 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE93ACCD1F025E0900717FC1 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		DE77E3151EFCCCF800993B7C /* PhotoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		DE77E3171EFCCE9D00993B7C /* PhotoListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
 		DE77E3191EFCE54E00993B7C /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		DE93ACCB1F025DF700717FC1 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		DE93ACCD1F025E0900717FC1 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		ED0EAE13799BF59AF87766CE /* Pods-PicasaPhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB3AF6BE3ACAD49A23E8348 /* Pods-PicasaPhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicasaPhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicasaPhotos/Pods-PicasaPhotos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				DE41F42A1EFC240C00B1A1A1 /* StoryboardUtil.swift */,
+				DE93ACCB1F025DF700717FC1 /* Constant.swift */,
+				DE93ACCD1F025E0900717FC1 /* Util.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -341,6 +347,8 @@
 				DE77E3141EFCC02A00993B7C /* AlbumViewController.swift in Sources */,
 				DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */,
 				DE77E31A1EFCE54E00993B7C /* PhotoViewController.swift in Sources */,
+				DE93ACCC1F025DF700717FC1 /* Constant.swift in Sources */,
+				DE93ACCE1F025E0900717FC1 /* Util.swift in Sources */,
 				DE41F41D1EFB980100B1A1A1 /* AlbumCell.swift in Sources */,
 				DE41F4281EFBE9F900B1A1A1 /* LoginViewController.swift in Sources */,
 				DE77E3041EFCA6E200993B7C /* Photo.swift in Sources */,

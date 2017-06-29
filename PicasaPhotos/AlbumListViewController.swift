@@ -34,9 +34,11 @@ class AlbumListViewController: UIViewController {
                 onNext: { _ in
                     HUD.hide()
                     print("request success")
-                }, onError: { error in
+                }, onError: { [weak self] error in
                     HUD.hide()
                     let code = (error as NSError).code
+                    let errorMessage = ErrorCode(rawValue: code)?.description() ?? ""
+                    self?.presentErrorMessage(title: errorMessage)
                     print("code: \(code)")
             })
             .addDisposableTo(disposeBag)
@@ -80,6 +82,8 @@ class AlbumListViewController: UIViewController {
                 }, onError: { [weak self] error in
                     self?.refreshControl.endRefreshing()
                     let code = (error as NSError).code
+                    let errorMessage = ErrorCode(rawValue: code)?.description() ?? ""
+                    self?.presentErrorMessage(title: errorMessage)
                     print("code: \(code)")
             })
             .addDisposableTo(disposeBag)

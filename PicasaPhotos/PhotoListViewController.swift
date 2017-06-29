@@ -27,6 +27,7 @@ class PhotoListViewController: UIViewController {
         imagePicker.delegate = self
         addUploadButton()
         collectionView.register(UINib(nibName: PhotoCell.identifier, bundle: nil), forCellWithReuseIdentifier: PhotoCell.identifier)
+        collectionView.alwaysBounceVertical = true
         addRefreshControl()
         configDataSource()
         bind()
@@ -36,9 +37,11 @@ class PhotoListViewController: UIViewController {
                 onNext: { _ in
                     HUD.hide()
                     print("request success")
-            }, onError: { error in
+            }, onError: { [weak self] error in
                 HUD.hide()
                 let code = (error as NSError).code
+                let errorMessage = ErrorCode(rawValue: code)?.description() ?? ""
+                self?.presentErrorMessage(title: errorMessage)
                 print("code: \(code)")
             })
             .addDisposableTo(disposeBag)
@@ -92,6 +95,8 @@ class PhotoListViewController: UIViewController {
             }, onError: { [weak self] error in
                 self?.refreshControl.endRefreshing()
                 let code = (error as NSError).code
+                let errorMessage = ErrorCode(rawValue: code)?.description() ?? ""
+                self?.presentErrorMessage(title: errorMessage)
                 print("code: \(code)")
             })
             .addDisposableTo(disposeBag)
@@ -116,10 +121,12 @@ extension PhotoListViewController: UIImagePickerControllerDelegate, UINavigation
                     onNext: { _ in
                         HUD.flash(.success, delay: 1.0)
                         print("request success")
-                }, onError: { error in
+                }, onError: { [weak self] error in
                     HUD.show(.error)
                     HUD.hide(afterDelay: 2.0)
                     let code = (error as NSError).code
+                    let errorMessage = ErrorCode(rawValue: code)?.description() ?? ""
+                    self?.presentErrorMessage(title: errorMessage)
                     print("code: \(code)")
                 })
                 .addDisposableTo(disposeBag)

@@ -14,6 +14,7 @@ target 'PicasaPhotos' do
   pod 'RxRealm'
   pod 'SDWebImage'
   pod 'PKHUD'
+  pod 'Whisper'
 
   # Pods for PicasaPhotos
 

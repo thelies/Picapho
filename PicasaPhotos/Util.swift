@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import Whisper
 
 class Util {
     class func generateNameByDate(date: Date) -> String {
@@ -32,5 +34,14 @@ class Util {
         }
         
         return error
+    }
+}
+
+extension UIViewController {
+    func presentErrorMessage(title: String) {
+        guard let navigationController = navigationController else { return }
+        let message = Message(title: title, backgroundColor: UIColor.red)
+        Whisper.show(whisper: message, to: navigationController, action: .present)
+        hide(whisperFrom: navigationController, after: 3)
     }
 }

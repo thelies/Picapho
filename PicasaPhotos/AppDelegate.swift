@@ -75,8 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     private func goTo(_ storyboard: UIStoryboard) {
         if let vc = storyboard.instantiateInitialViewController() {
-            UIView.transition(from: window!.rootViewController!.view, to: (vc.view)! , duration: 0.5, options: .transitionCrossDissolve, completion: { _ in
-                self.window?.rootViewController = vc
+            UIView.transition(from: window!.rootViewController!.view, to: (vc.view)! , duration: 0.5, options: .transitionCrossDissolve, completion: { [weak self] _ in
+                self?.window?.rootViewController = vc
             })
         }
     }

@@ -57,12 +57,10 @@ class AlbumListViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         tableView.rx.itemSelected
-            .map { [weak self] indexPath in
-                try! self?.dataSource.model(at: indexPath) as! Album
-            }
-            .subscribe(onNext: { [weak self] album in
+            .subscribe(onNext: { [weak self] indexPath in
+                let cell = self?.tableView.cellForRow(at: indexPath) as! AlbumCell
                 let albumViewController = self?.storyboard?.instantiateViewController(withIdentifier: AlbumViewController.identifier) as! AlbumViewController
-                albumViewController.viewModel = AlbumViewModel(album: album)
+                albumViewController.viewModel = cell.viewModel
                 self?.navigationController?.pushViewController(albumViewController, animated: true)
             })
             .addDisposableTo(disposeBag)
@@ -77,10 +75,10 @@ class AlbumListViewController: UIViewController {
     func refresh() {
         viewModel.fetchAlbums()
             .subscribe(
-                onNext: { _ in
-                    self.refreshControl.endRefreshing()
-                }, onError: { error in
-                    self.refreshControl.endRefreshing()
+                onNext: { [weak self] _ in
+                    self?.refreshControl.endRefreshing()
+                }, onError: { [weak self] error in
+                    self?.refreshControl.endRefreshing()
                     let code = (error as NSError).code
                     print("code: \(code)")
             })

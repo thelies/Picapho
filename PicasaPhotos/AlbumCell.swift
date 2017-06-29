@@ -19,7 +19,7 @@ class AlbumCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     
-    var viewModel: AlbumViewModel!
+    var viewModel: AlbumViewModel?
     private var bag: DisposeBag?
     let gradientLayer = CAGradientLayer()
     
@@ -30,12 +30,12 @@ class AlbumCell: UITableViewCell {
     
     func bind() {
         bag = DisposeBag()
-        viewModel.title.asDriver().drive(titleLabel.rx.text).addDisposableTo(bag!)
-        viewModel.numphotos.asDriver()
+        viewModel?.title.asDriver().drive(titleLabel.rx.text).addDisposableTo(bag!)
+        viewModel?.numphotos.asDriver()
             .map { number in number > 1 ? "\(number) photos" : "\(number) photo"}
             .drive(subTitleLabel.rx.text)
             .addDisposableTo(bag!)
-        viewModel.imageURL.asDriver().drive(onNext: { [weak self] url in
+        viewModel?.imageURL.asDriver().drive(onNext: { [weak self] url in
             self?.albumImage.sd_setImage(with: URL(string: url))
         }).addDisposableTo(bag!)
     }
@@ -51,6 +51,7 @@ class AlbumCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         bag = nil
+        viewModel = nil
     }
     
     override func layoutSubviews() {

@@ -63,12 +63,10 @@ class AlbumViewController: UIViewController {
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .addDisposableTo(disposeBag)
         collectionView.rx.itemSelected
-            .map { [weak self] indexPath in
-                try! self?.dataSource.model(at: indexPath) as! Photo
-            }
-            .subscribe(onNext: { [weak self] photo in
+            .subscribe(onNext: { [weak self] indexPath in
+                let cell = self?.collectionView.cellForItem(at: indexPath) as! PhotoCell
                 let photoViewController = self?.storyboard?.instantiateViewController(withIdentifier: PhotoViewController.identifier) as! PhotoViewController
-                photoViewController.viewModel = PhotoViewModel(photo: photo)
+                photoViewController.viewModel = cell.viewModel
                 self?.navigationController?.pushViewController(photoViewController, animated: true)
             })
             .addDisposableTo(disposeBag)
@@ -94,10 +92,10 @@ class AlbumViewController: UIViewController {
     func refresh() {
         viewModel.fetchPhotos()
             .subscribe(
-                onNext: { _ in
-                    self.refreshControl.endRefreshing()
-            }, onError: { error in
-                self.refreshControl.endRefreshing()
+                onNext: { [weak self] _ in
+                    self?.refreshControl.endRefreshing()
+            }, onError: { [weak self] error in
+                self?.refreshControl.endRefreshing()
                 let code = (error as NSError).code
                 print("code: \(code)")
             })

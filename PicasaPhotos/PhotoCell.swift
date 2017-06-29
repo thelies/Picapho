@@ -21,12 +21,12 @@ class PhotoCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    var viewModel: PhotoViewModel!
+    var viewModel: PhotoViewModel?
     private var bag: DisposeBag?
     
     func bind() {
         bag = DisposeBag()
-        viewModel.thumbnailURL.asDriver().drive(onNext: { [weak self] url in
+        viewModel?.thumbnailURL.asDriver().drive(onNext: { [weak self] url in
             self?.photoImage.sd_setImage(with: URL(string: url))
         }).addDisposableTo(bag!)
     }
@@ -34,5 +34,6 @@ class PhotoCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         bag = nil
+        viewModel = nil
     }
 }

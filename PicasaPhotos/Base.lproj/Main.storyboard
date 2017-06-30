@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -64,19 +65,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-y9-tdd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="333.5"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZH-dS-0M1" customClass="GMSMapView">
+                                <rect key="frame" x="16" y="379.5" width="343" height="279.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2x-IX-48F">
+                                <rect key="frame" x="16" y="357.5" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kCh-CF-bj5" firstAttribute="top" secondItem="EZH-dS-0M1" secondAttribute="bottom" constant="8" id="0KF-mW-ghE"/>
                             <constraint firstAttribute="trailing" secondItem="7m8-y9-tdd" secondAttribute="trailing" id="5RG-b7-iTG"/>
-                            <constraint firstItem="kCh-CF-bj5" firstAttribute="top" secondItem="7m8-y9-tdd" secondAttribute="bottom" id="8Pz-Kk-Lz9"/>
+                            <constraint firstAttribute="trailing" secondItem="EZH-dS-0M1" secondAttribute="trailing" constant="16" id="BEv-FW-ofj"/>
+                            <constraint firstItem="V2x-IX-48F" firstAttribute="top" secondItem="7m8-y9-tdd" secondAttribute="bottom" constant="4" id="FNe-5k-IfE"/>
+                            <constraint firstItem="EZH-dS-0M1" firstAttribute="top" secondItem="V2x-IX-48F" secondAttribute="bottom" constant="4" id="ITd-3Q-32v"/>
                             <constraint firstItem="7m8-y9-tdd" firstAttribute="top" secondItem="NUH-5i-1RB" secondAttribute="bottom" id="VNp-UO-t0g"/>
+                            <constraint firstItem="EZH-dS-0M1" firstAttribute="leading" secondItem="Fgw-aO-k65" secondAttribute="leading" constant="16" id="fiB-VG-Ii8"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="V2x-IX-48F" secondAttribute="leading" id="lod-1u-8p5"/>
+                            <constraint firstItem="7m8-y9-tdd" firstAttribute="height" secondItem="Fgw-aO-k65" secondAttribute="height" multiplier="0.5" id="q0P-qg-5ix"/>
                             <constraint firstItem="7m8-y9-tdd" firstAttribute="leading" secondItem="Fgw-aO-k65" secondAttribute="leading" id="rxB-bB-HTZ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="EZH-dS-0M1" id="4UP-92-F4d"/>
                         <outlet property="photoImage" destination="7m8-y9-tdd" id="1Le-GN-AT7"/>
+                        <outlet property="placeLabel" destination="V2x-IX-48F" id="Q6D-8S-PUR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jiy-6n-2gn" userLabel="First Responder" sceneMemberID="firstResponder"/>

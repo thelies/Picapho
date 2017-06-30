@@ -9,6 +9,7 @@
 import UIKit
 import GGLSignIn
 import GoogleSignIn
+import GoogleMaps
 
 enum AppMode {
     case Init
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(configureError)")
         GIDSignIn.sharedInstance().signInSilently()
+        GMSServices.provideAPIKey("AIzaSyAe75F2SweH0LHJTqLUIZyrCBiEY1wgw5Y")
         return true
     }
 

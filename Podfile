@@ -16,6 +16,7 @@ target 'PicasaPhotos' do
   pod 'PKHUD'
   pod 'Whisper'
   pod 'ReachabilitySwift'
+  pod 'GoogleMaps'
 
   # Pods for PicasaPhotos
 

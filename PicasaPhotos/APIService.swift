@@ -15,7 +15,7 @@ import RxSwift
 
 enum RequestResult {
     case Success
-    case Error(NSError)
+    case Fail
 }
 
 protocol APIServiceProtocol {
@@ -91,6 +91,10 @@ class APIService: APIServiceProtocol {
             "fields": "\(feedFields),\(entryFields)",
         ]
         
+        if !ReachabilityService.sharedInstance.reachable.value {
+            return Observable.just(RequestResult.Fail)
+        }
+        
         return request(url: url, method: .get, parameters: params, headers: headers)
             .map { data -> RequestResult in
                 let feedData = data["feed"]
@@ -119,6 +123,10 @@ class APIService: APIServiceProtocol {
             "fields": "\(feedFields),\(entryFields)",
             "max-results": 100
         ]
+        
+        if !ReachabilityService.sharedInstance.reachable.value {
+            return Observable.just(RequestResult.Fail)
+        }
         
         return request(url: url, method: .get, parameters: params, headers: headers)
             .map { data -> RequestResult in
@@ -153,6 +161,10 @@ class APIService: APIServiceProtocol {
             "max-results": 20
         ]
         
+        if !ReachabilityService.sharedInstance.reachable.value {
+            return Observable.just(RequestResult.Fail)
+        }
+
         return request(url: url, method: .get, parameters: params, headers: headers)
             .map { data -> RequestResult in
                 let feedData = data["feed"]
@@ -178,6 +190,10 @@ class APIService: APIServiceProtocol {
         newHeaders["Content-Type"] = "image/jpeg"
         newHeaders["Content-Length"] = "\(imageData!.count)"
         newHeaders["Slug"] = "\(generateNameByDate(date: Date()))"
+
+        if !ReachabilityService.sharedInstance.reachable.value {
+            return Observable.just(RequestResult.Fail)
+        }
         
         return upload(data: imageData!, to: url, method: .post, headers: newHeaders)
             .map { data -> RequestResult in

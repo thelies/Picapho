@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55DD96D1681561B4E2D40EDF /* Pods_PicasaPhotos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973011662652F079A7235556 /* Pods_PicasaPhotos.framework */; };
+		DE22A9141F05DC8E00049A67 /* ReachabilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22A9131F05DC8E00049A67 /* ReachabilityService.swift */; };
 		DE41F3FD1EFA476600B1A1A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */; };
 		DE41F4021EFA476600B1A1A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4001EFA476600B1A1A1 /* Main.storyboard */; };
 		DE41F4041EFA476600B1A1A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE41F4031EFA476600B1A1A1 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		973011662652F079A7235556 /* Pods_PicasaPhotos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicasaPhotos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE22A9131F05DC8E00049A67 /* ReachabilityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityService.swift; sourceTree = "<group>"; };
 		DE41F3F91EFA476600B1A1A1 /* PicasaPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicasaPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE41F3FC1EFA476600B1A1A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE41F4011EFA476600B1A1A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				DE41F4151EFB55D000B1A1A1 /* APIService.swift */,
+				DE22A9131F05DC8E00049A67 /* ReachabilityService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				DE41F4161EFB55D000B1A1A1 /* APIService.swift in Sources */,
 				DE77E3141EFCC02A00993B7C /* AlbumViewController.swift in Sources */,
 				DE41F42F1EFC86EE00B1A1A1 /* AlbumListViewController.swift in Sources */,
+				DE22A9141F05DC8E00049A67 /* ReachabilityService.swift in Sources */,
 				DE77E31A1EFCE54E00993B7C /* PhotoViewController.swift in Sources */,
 				DE93ACCC1F025DF700717FC1 /* Constant.swift in Sources */,
 				DE93ACCE1F025E0900717FC1 /* Util.swift in Sources */,

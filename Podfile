@@ -15,6 +15,7 @@ target 'PicasaPhotos' do
   pod 'SDWebImage'
   pod 'PKHUD'
   pod 'Whisper'
+  pod 'ReachabilitySwift'
 
   # Pods for PicasaPhotos
 

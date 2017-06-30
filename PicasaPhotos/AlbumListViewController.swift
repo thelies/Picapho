@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 import PKHUD
+import ReachabilitySwift
 
 class AlbumListViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
@@ -31,9 +32,13 @@ class AlbumListViewController: UIViewController {
         HUD.show(.progress)
         viewModel.fetchAlbums()
             .subscribe(
-                onNext: { _ in
+                onNext: { [weak self] result in
                     HUD.hide()
-                    print("request success")
+                    if result == RequestResult.Fail {
+                        self?.presentErrorMessage(title: NetworkNotAvailable)
+                    } else {
+                        print("request success")
+                    }
                 }, onError: { [weak self] error in
                     HUD.hide()
                     let code = (error as NSError).code
@@ -66,6 +71,14 @@ class AlbumListViewController: UIViewController {
                 self?.navigationController?.pushViewController(albumViewController, animated: true)
             })
             .addDisposableTo(disposeBag)
+        
+        ReachabilityService.sharedInstance.reachable.asObservable()
+            .subscribe(onNext: { [weak self] isNetworkAvailable in
+                if !isNetworkAvailable {
+                    self?.presentErrorMessage(title: NetworkNotAvailable)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func addRefreshControl() {
@@ -77,8 +90,13 @@ class AlbumListViewController: UIViewController {
     func refresh() {
         viewModel.fetchAlbums()
             .subscribe(
-                onNext: { [weak self] _ in
+                onNext: { [weak self] result in
                     self?.refreshControl.endRefreshing()
+                    if result == RequestResult.Fail {
+                        self?.presentErrorMessage(title: NetworkNotAvailable)
+                    } else {
+                        print("request success")
+                    }
                 }, onError: { [weak self] error in
                     self?.refreshControl.endRefreshing()
                     let code = (error as NSError).code

@@ -45,3 +45,9 @@ extension UIViewController {
         hide(whisperFrom: navigationController, after: 3)
     }
 }
+
+func generateNameByDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyyMMdd_hhmmss"
+    return dateFormatter.string(from: date)
+}

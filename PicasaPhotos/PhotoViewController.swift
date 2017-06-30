@@ -31,6 +31,14 @@ class PhotoViewController: UIViewController {
             .addDisposableTo(disposeBag)
         viewModel.title.asDriver().drive(self.navigationItem.rx.title)
             .addDisposableTo(disposeBag)
+        
+        ReachabilityService.sharedInstance.reachable.asObservable()
+            .subscribe(onNext: { [weak self] isNetworkAvailable in
+                if !isNetworkAvailable {
+                    self?.presentErrorMessage(title: NetworkNotAvailable)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
 
     func addSaveButton() {

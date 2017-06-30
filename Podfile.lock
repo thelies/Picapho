@@ -36,6 +36,7 @@ PODS:
   - GTMSessionFetcher/Full (1.1.10):
     - GTMSessionFetcher/Core (= 1.1.10)
   - PKHUD (4.2.2)
+  - ReachabilitySwift (3)
   - Realm (2.8.0):
     - Realm/Headers (= 2.8.0)
   - Realm/Headers (2.8.0)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - Alamofire
   - Google/SignIn
   - PKHUD
+  - ReachabilitySwift
   - RealmSwift
   - RxCocoa
   - RxDataSources
@@ -80,6 +82,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
   PKHUD: 9a3599e04d57676ec14746c40e423a52fb6588c0
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   Realm: 929243ad2b618b3232e70658bedc61110e7563f1
   RealmSwift: 5b7079b891f2833d1849294161ba3e092bbda3f6
   RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
@@ -90,6 +93,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 21340633daddd9aaf5c625ae92a26ca6dcdbfe1b
   Whisper: 051f25e704bf8992641ffd28b20d5682ddc5f5d3
 
-PODFILE CHECKSUM: 856f72d99ea58ee2e2ae41bffb576ced5fd53174
+PODFILE CHECKSUM: 015de7089af6b4ca249c3dee451db136d77e28aa
 
 COCOAPODS: 1.2.1

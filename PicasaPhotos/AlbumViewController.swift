@@ -36,9 +36,13 @@ class AlbumViewController: UIViewController {
         HUD.show(.progress)
         viewModel.fetchPhotos()
             .subscribe(
-                onNext: { _ in
+                onNext: { [weak self] result in
                     HUD.hide()
-                    print("request success")
+                    if result == RequestResult.Fail {
+                        self?.presentErrorMessage(title: NetworkNotAvailable)
+                    } else {
+                        print("request success")
+                    }
             }, onError: { [weak self] error in
                 HUD.hide()
                 let code = (error as NSError).code
@@ -73,6 +77,14 @@ class AlbumViewController: UIViewController {
                 self?.navigationController?.pushViewController(photoViewController, animated: true)
             })
             .addDisposableTo(disposeBag)
+        
+        ReachabilityService.sharedInstance.reachable.asObservable()
+            .subscribe(onNext: { [weak self] isNetworkAvailable in
+                if !isNetworkAvailable {
+                    self?.presentErrorMessage(title: NetworkNotAvailable)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     func addUploadButton() {
@@ -95,8 +107,13 @@ class AlbumViewController: UIViewController {
     func refresh() {
         viewModel.fetchPhotos()
             .subscribe(
-                onNext: { [weak self] _ in
+                onNext: { [weak self] result in
                     self?.refreshControl.endRefreshing()
+                    if result == RequestResult.Fail {
+                        self?.presentErrorMessage(title: NetworkNotAvailable)
+                    } else {
+                        print("request success")
+                    }
             }, onError: { [weak self] error in
                 self?.refreshControl.endRefreshing()
                 let code = (error as NSError).code
@@ -118,9 +135,14 @@ extension AlbumViewController: UIImagePickerControllerDelegate, UINavigationCont
             HUD.show(.progress)
             viewModel.uploadPhoto(image: pickedImage)
                 .subscribe(
-                    onNext: { _ in
+                    onNext: { [weak self] result in
+                    if result == RequestResult.Fail {
+                        HUD.hide()
+                        self?.presentErrorMessage(title: NetworkNotAvailable)
+                    } else {
                         HUD.flash(.success, delay: 1.0)
                         print("request success")
+                    }
                 }, onError: { [weak self] error in
                     HUD.show(.error)
                     HUD.hide(afterDelay: 2.0)
